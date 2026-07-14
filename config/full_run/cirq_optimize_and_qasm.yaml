@@ -1,0 +1,29 @@
+# This file includes the configuration parameters for fuzzing Cirq.
+
+fuzzing:
+  num: 100000
+  total_time: 24
+  log_level: 3
+  otf: true
+  resume: true
+  evaluate: false
+  use_hand_written_prompt: false
+  no_input_prompt: false
+  prompt_strategy: 2
+
+target:
+  language: cirq
+  path_documentation: config/documentation/cirq/cirq_std.md
+  path_example_code:
+  trigger_to_generate_input: "'''Create Cirq quantum circuits and combine Cirq APIs in complex but valid ways.'''"
+  input_hint: "import cirq\n"
+  path_hand_written_prompt:
+  target_string: "cirq."
+  oracle: optimize_and_qasm
+
+llm:
+  temperature: 1
+  batch_size: 30
+  device: cuda
+  model_name: bigcode/starcoderbase
+  max_length: 1024
